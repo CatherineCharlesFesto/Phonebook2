@@ -57,4 +57,51 @@ def initial_phonebook():
 		# That means phone_book is a 2-D array and temp is a 1-D array 
 	
 	print(phone_book) 
+	return phone_book 
+
+def menu():
+    print("********************************************************************") 
+    print("\t\t\tSMARTPHONE DIRECTORY", flush=False) 
+    print("********************************************************************") 
+    print("\tYou can now perform the following operations on this phonebook\n") 
+    print("1. Add a new contact") 
+    print("2. Remove an existing contact") 
+    print("3. Delete all contacts") 
+    print("4. Search for a contact") 
+    print("5. Display all contacts") 
+    print("6. Exit phonebook") 
+
+def add_contact(pb): 
+	# Adding a contact is the easiest because all you need to do is: 
+	# append another list of details into the already existing list 
+	dip = [] 
+	for i in range(len(pb[0])): 
+		if i == 0: 
+			dip.append(str(input("Enter name: "))) 
+		if i == 1: 
+			dip.append(int(input("Enter number: "))) 
+		if i == 2: 
+			dip.append(str(input("Enter e-mail address: "))) 
+		if i == 3: 
+			dip.append(str(input("Enter date of birth(dd/mm/yy): "))) 
+		if i == 4: 
+			dip.append( 
+				str(input("Enter category(Family/Friends/Work/Others): "))) 
+	pb.append(dip) 
+	# And once you modify the list, you return it to the calling function wiz main, here. 
+	return pb
+# Main function code 
+print("....................................................................") 
+print("Hello dear user, welcome to our smartphone directory system") 
+print("You may now proceed to explore this directory") 
+print("....................................................................") 
+# This is solely meant for decoration purpose only. 
+# You're free to modify your interface as per your will to make it look interactive 
+
+ch = 1
+pb = initial_phonebook() 
+menu()
+choice=int(input("Enter your choice : (1-6)"))
+if choice==1:
+	pb=add_contact(pb)
 
